@@ -87,8 +87,71 @@
         <None Include="OptimizarPlus.png" />
     </ItemGroup>
     <ItemGroup>
+      <COMReference Include="DDMSEAPILib">
+        <Guid>{5FC1B7D8-1CDE-4784-B1C1-DA062DEE7FAD}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="DesignManager">
+        <Guid>{427C71BD-B200-4421-AB49-12DA610B369E}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="RevisionManager">
+        <Guid>{DF778D1A-0AA4-11D1-BC6E-0800360E1E02}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SEInstallDataLib">
+        <Guid>{42E04299-18A0-11D5-BBB2-00C04F79BEA5}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeAssembly">
+        <Guid>{3E2B3BD4-F0B9-11D1-BDFD-080036B4D502}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
       <COMReference Include="SolidEdgeConstants">
         <Guid>{C467A6F5-27ED-11D2-BE30-080036B4D502}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeDraft">
+        <Guid>{3E2B3BDC-F0B9-11D1-BDFD-080036B4D502}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeFileProperties">
+        <Guid>{AED8FE52-3129-11D1-BC83-0800360E1E02}</Guid>
         <VersionMajor>1</VersionMajor>
         <VersionMinor>0</VersionMinor>
         <Lcid>0</Lcid>
@@ -99,6 +162,24 @@
       <COMReference Include="SolidEdgeFramework">
         <Guid>{8A7EFA3A-F000-11D1-BDFC-080036B4D502}</Guid>
         <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeFrameworkSupport">
+        <Guid>{943AC5C6-F4DB-11D1-BE00-080036B4D502}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeGateway">
+        <Guid>{05406F26-4B8F-407A-8750-D81A82CE14A8}</Guid>
+        <VersionMajor>2</VersionMajor>
         <VersionMinor>0</VersionMinor>
         <Lcid>0</Lcid>
         <WrapperTool>tlbimp</WrapperTool>
@@ -116,6 +197,33 @@
       </COMReference>
       <COMReference Include="SolidEdgePart">
         <Guid>{8A7EFA42-F000-11D1-BDFC-080036B4D502}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="SolidEdgeScreenCapture">
+        <Guid>{BA1BED1A-E2B2-41F3-A95E-06696290063E}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="StructureEditor">
+        <Guid>{A91AA076-8091-48A7-9F9B-B59BDAF78127}</Guid>
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+      <COMReference Include="TDxSolidEdgeLib">
+        <Guid>{2E8B1B1C-35E9-404A-9E19-3C8A2EE01177}</Guid>
         <VersionMajor>1</VersionMajor>
         <VersionMinor>0</VersionMinor>
         <Lcid>0</Lcid>

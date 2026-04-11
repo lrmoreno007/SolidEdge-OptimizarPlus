@@ -1,10 +1,11 @@
 ﻿Imports System.Runtime.InteropServices
+Imports SolidEdgeFramework
 
 Module Module1
-    <STAThread()> _
+    <STAThread()>
     Sub Main()
         Dim instances As Process() = Process.GetProcessesByName("Edge")
-        If instances.Count >=2 Then
+        If instances.Count >= 2 Then
             MsgBox("Más de 1 aplicación de SolidEdge abierta, utilice solo una y vuelva a intentarlo.")
             Return
         End If
@@ -24,7 +25,7 @@ Module Module1
             Return
         End If
         Dim objModels As SolidEdgePart.Models = Nothing
-        Console.Write("Documento del tipo: ") 
+        Console.Write("Documento del tipo: ")
         Try
             Select Case activeDocument.Type
                 Case SolidEdgeFramework.DocumentTypeConstants.igAssemblyDocument
@@ -41,7 +42,7 @@ Module Module1
                     Console.WriteLine("Pieza")
                     Dim objPartDocument As SolidEdgePart.PartDocument
                     objPartDocument = objApplication.ActiveDocument
-                    objModels = objPartDocument.Models 
+                    objModels = objPartDocument.Models
                     objPartDocument.CoordinateSystems.Visible = False
                     objPartDocument.RefPlanes.Item(1).Visible = False
                     objPartDocument.RefPlanes.Item(2).Visible = False
@@ -49,8 +50,10 @@ Module Module1
                     objApplication.StartCommand(SolidEdgeConstants.PartCommandConstants.PartViewFit)
                     Try
                         Console.Write("Cambiando a Modo Síncrono... ")
-                        If CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,Boolean) Then
-                            objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,SolidEdgePart.ModelingModeConstants)
+                        If CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered, Boolean) Then
+                            objPartDocument.ModelingMode =
+                                CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,
+                                      SolidEdgePart.ModelingModeConstants)
                         End If
                         Console.WriteLine("OK")
                     Catch
@@ -72,9 +75,14 @@ Module Module1
                             aWarningMessages = Array.CreateInstance(GetType(String), 0)
                             Dim dVolumeDifference As Double = 0
                             'MoveToSynchronous en pieza tiene 8 argumentos
-                            objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection, lNumberOfFeaturesCausingError, aErrorMessages, lNumberOfFeaturesCausingWarning, aWarningMessages, dVolumeDifference)
+                            objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection,
+                                                              lNumberOfFeaturesCausingError, aErrorMessages,
+                                                              lNumberOfFeaturesCausingWarning, aWarningMessages,
+                                                              dVolumeDifference)
                         Next
-                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,SolidEdgePart.ModelingModeConstants)
+                        objPartDocument.ModelingMode =
+                            CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,
+                                  SolidEdgePart.ModelingModeConstants)
                         Console.WriteLine("OK")
                     Finally
                     End Try
@@ -83,7 +91,7 @@ Module Module1
                     Console.WriteLine("Chapa")
                     Dim objPartDocument As SolidEdgePart.SheetMetalDocument
                     objPartDocument = objApplication.ActiveDocument
-                    objModels = objPartDocument.Models 
+                    objModels = objPartDocument.Models
                     objPartDocument.CoordinateSystems.Visible = False
                     objPartDocument.RefPlanes.Item(1).Visible = False
                     objPartDocument.RefPlanes.Item(2).Visible = False
@@ -91,8 +99,10 @@ Module Module1
                     objApplication.StartCommand(SolidEdgeConstants.SheetMetalCommandConstants.SheetMetalViewFit)
                     Try
                         Console.Write("Cambiando a Modo Síncrono... ")
-                        If CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,Boolean) Then
-                            objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,SolidEdgePart.ModelingModeConstants)
+                        If CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered, Boolean) Then
+                            objPartDocument.ModelingMode =
+                                CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,
+                                      SolidEdgePart.ModelingModeConstants)
                         End If
                         Console.WriteLine("OK")
                     Catch
@@ -113,13 +123,17 @@ Module Module1
                             aErrorMessages = Array.CreateInstance(GetType(String), 0)
                             aWarningMessages = Array.CreateInstance(GetType(String), 0)
                             'MoveToSynchronous en chapa tiene 7 argumentos
-                            objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection, lNumberOfFeaturesCausingError, aErrorMessages, lNumberOfFeaturesCausingWarning, aWarningMessages)
+                            objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection,
+                                                              lNumberOfFeaturesCausingError, aErrorMessages,
+                                                              lNumberOfFeaturesCausingWarning, aWarningMessages)
                         Next
-                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,SolidEdgePart.ModelingModeConstants)
+                        objPartDocument.ModelingMode =
+                            CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,
+                                  SolidEdgePart.ModelingModeConstants)
                         Console.WriteLine("OK")
                     Finally
                     End Try
-                    
+
                 Case SolidEdgeFramework.DocumentTypeConstants.igWeldmentAssemblyDocument
                     MsgBox("Ensamblaje soldado, nada que hacer")
                     Console.WriteLine("Ensamblaje soldado")
@@ -136,7 +150,7 @@ Module Module1
             Dim objModel As SolidEdgePart.Model
             objModel = objModels.Item(1)
             objModel.HealAndOptimizeBody(False, True)
-            objApplication.DoIdle() 
+            objApplication.DoIdle()
             Console.WriteLine("OK")
             ' RECONOCER AGUJEROS
             Console.Write("Reconociendo agujeros... ")
@@ -149,8 +163,8 @@ Module Module1
             Dim numHoles As Integer = 1
             Dim objRecognizedHoles As Array
             objRecognizedHoles = New SolidEdgePart.Features() {}
-            objModel.Holes.RecognizeAndCreateHoleGroups(numBodies, objBodies, numHoles, objRecognizedHoles) 
-            objApplication.DoIdle() 
+            objModel.Holes.RecognizeAndCreateHoleGroups(numBodies, objBodies, numHoles, objRecognizedHoles)
+            objApplication.DoIdle()
             Console.WriteLine("OK")
             ' CAMBIAR A MODO ORDENADO
             Console.Write("Cambiando a Modo Ordenado... ")
@@ -159,24 +173,92 @@ Module Module1
                 Case SolidEdgeFramework.DocumentTypeConstants.igPartDocument
                     Dim objPartDocument As SolidEdgePart.PartDocument
                     objPartDocument = CType(objApplication.ActiveDocument, SolidEdgePart.PartDocument)
-                    If CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,Boolean) Then
-                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,SolidEdgePart.ModelingModeConstants)
+                    If CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous, Boolean) Then
+                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,
+                                                             SolidEdgePart.ModelingModeConstants)
                     End If
+                    Console.WriteLine("OK")
+
                 Case SolidEdgeFramework.DocumentTypeConstants.igSheetMetalDocument
                     Dim objPartDocument As SolidEdgePart.SheetMetalDocument
                     objPartDocument = CType(objApplication.ActiveDocument, SolidEdgePart.SheetMetalDocument)
-                    If CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous,Boolean) Then
-                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,SolidEdgePart.ModelingModeConstants)
+                    If CType(SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous, Boolean) Then
+                        objPartDocument.ModelingMode = CType(SolidEdgePart.ModelingModeConstants.seModelingModeOrdered,
+                                                             SolidEdgePart.ModelingModeConstants)
+                    End If
+                    Console.WriteLine("OK")
+
+                    Console.Write("Buscando la cara mas grande... ")
+                    If objModels.Count > 0 Then
+                        Dim objBody As SolidEdgeGeometry.Body = CType(objModel.Body, SolidEdgeGeometry.Body)
+                        Dim objFaces As SolidEdgeGeometry.Faces =
+                                objBody.Faces(SolidEdgeGeometry.FeatureTopologyQueryTypeConstants.igQueryAll)
+                        objApplication.DoIdle()
+                        Dim objBaseFace As SolidEdgeGeometry.Face = objFaces.Item(1)
+                        Dim maxArea As Double = 0
+                        For i As Integer = 1 To objFaces.Count
+                            Dim f As SolidEdgeGeometry.Face = objFaces.Item(i)
+                            If f.Area > maxArea Then
+                                maxArea = f.Area
+                                objBaseFace = f
+                            End If
+                        Next
+                        Console.WriteLine("OK")
+
+                        Console.Write("Contando el número de aristas de la pieza...  ")
+                        Dim objAllEdges As SolidEdgeGeometry.Edges =
+                                objBody.Edges(SolidEdgeGeometry.FeatureTopologyQueryTypeConstants.igQueryAll)
+                        Dim aEdges As Array = Array.CreateInstance(GetType(Object), objAllEdges.Count)
+                        For i As Integer = 1 To objAllEdges.Count
+                            aEdges.SetValue(objAllEdges.Item(i), i - 1)
+                        Next
+                        Console.Write("OK ---> Encontradas ")
+                        Console.Write(objAllEdges.Count)
+                        Console.WriteLine(" aristas en la pieza")
+                        Console.Write("Transformando a chapa ")
+                        Try
+                            objModel.ConvToSMs.AddEx(objBaseFace, 1, aEdges, Nothing, 0.0, 0.0)
+                            Console.WriteLine("OK")
+                        Catch ex As Exception
+                            Console.WriteLine("Error: " & ex.Message)
+                        End Try
                     End If
             End Select
 
-            Console.WriteLine("OK")
+            Dim respuestaGuardar As MsgBoxResult = MsgBox("¿Desea guardar el documento?",
+                                                          MsgBoxStyle.YesNo + MsgBoxStyle.Question, 
+                                                          "Guardar Como")
+            If respuestaGuardar = MsgBoxResult.Yes Then
+                Try
+                    objApplication.DoIdle()
+                    activeDocument.Save()
+                Catch ex As Exception
+                    Console.WriteLine("Error al guardar: " & ex.Message)
+                    MsgBox("No se pudo realizar el Guardar Como. Compruebe si el archivo ya existe o está abierto.",
+                           MsgBoxStyle.Critical)
+                End Try
+            End If
+
+            ' La selección del material tiene que ser la última porque este formulario no detiene la ejecución de la macro y finaliza.
+            Dim respuesta As MsgBoxResult = MsgBox("¿Desea asignar un material a la pieza?",
+                                                   MsgBoxStyle.YesNo + MsgBoxStyle.Question,
+                                                   "Asignar Material")
+            If respuesta = MsgBoxResult.Yes Then
+                Try
+                    objApplication.DoIdle()
+                    objApplication.StartCommand(45163)
+                    objApplication.DoIdle()
+                Catch ex As Exception
+                    Console.WriteLine("Error al abrir la tabla de materiales: " & ex.Message)
+                End Try
+            End If
+
         Catch ex As Exception
             Console.WriteLine(ex.Message)
             'MsgBox(ex.Message)
-            Environment.ExitCode = -1
+            System.Environment.ExitCode = - 1
         Finally
-            If Environment.ExitCode = 0 Then
+            If System.Environment.ExitCode = 0 Then
                 Console.WriteLine("Finalizado OK")
             Else
                 Console.WriteLine("Finalizado con errores")
