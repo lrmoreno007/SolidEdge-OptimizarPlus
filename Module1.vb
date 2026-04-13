@@ -72,8 +72,8 @@ Module Module1
                         Dim lNumberOfFeaturesCausingWarning As Integer
                         Dim dVolumeDifference As Integer
                         For Each objFeature In objFeatures 'Iterar sobre características
-                            aErrorMessages = Array.CreateInstance(GetType(String), 0) 'Inicializar mensajes de error
-                            aWarningMessages = Array.CreateInstance(GetType(String), 0) 'Inicializar mensajes de advertencia
+                            aErrorMessages = Array.CreateInstance(GetType(String), 0) 
+                            aWarningMessages = Array.CreateInstance(GetType(String), 0) 
                             'MoveToSynchronous en pieza tiene 8 argumentos
                             objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection,
                                                               lNumberOfFeaturesCausingError, aErrorMessages,
@@ -120,8 +120,8 @@ Module Module1
                         Dim lNumberOfFeaturesCausingError As Integer
                         Dim lNumberOfFeaturesCausingWarning As Integer
                         For Each objFeature In objFeatures 'Iterar sobre características
-                            aErrorMessages = Array.CreateInstance(GetType(String), 0) 'Inicializar mensajes de error
-                            aWarningMessages = Array.CreateInstance(GetType(String), 0) 'Inicializar mensajes de advertencia
+                            aErrorMessages = Array.CreateInstance(GetType(String), 0)
+                            aWarningMessages = Array.CreateInstance(GetType(String), 0) 
                             'MoveToSynchronous en chapa tiene 7 argumentos
                             objPartDocument.MoveToSynchronous(objFeature, bIgnoreWarnings, bExtentSelection,
                                                               lNumberOfFeaturesCausingError, aErrorMessages,
