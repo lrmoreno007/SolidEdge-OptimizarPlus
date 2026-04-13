@@ -1,4 +1,4 @@
-Macro for Solid Edge ST, the intention is to use it right after importing a model from STEP, IGES, SAT or any other format, to heal-optimize and recognize some features (only holes at this moment), both in part and sheet metal mode. It also move the model into synchronous mode, hides the coordinate system icon, hide the reference planes, make a zoom fit and ends in ordered mode.
+Macro for Solid Edge ST, the intention is to use it right after importing a model from STEP, IGES, SAT or any other format, to heal-optimize and recognize some features (only holes at this moment), both in part and sheet metal mode. It also move the model into synchronous mode, hides the coordinate system icon, hide the reference planes, make a zoom fit and ends in ordered mode. Convert the part to sheet metal, ask you to save the file and open the material property form.
 
 How-To:
 You must follow these instructions two times, in Part and SheetMetal Environment.
